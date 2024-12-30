@@ -8,7 +8,7 @@ curl -o "$HOME/.zshrc" https://raw.githubusercontent.com/Lucioschenkel/dotfiles/
 # Setup homebrew
 test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
+echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >>~/.bashrc
 
 # Install brew packages
 /home/linuxbrew/.linuxbrew/bin/brew bundle install --file Brewfile
@@ -17,7 +17,7 @@ echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
 stow .
 
 # Setup shell completion
-midir -p "$HOME/.zfunc
-flux completion zsh > $HOME/.zfunc/_flux
-kubectl completion zsh > $HOME/.zfunc/_kubectl
-helm completion zsh > $HOME/.zfunc/_helm
+midir -p "$HOME/.zfunc"
+flux completion zsh >$HOME/.zfunc/_flux
+kubectl completion zsh >$HOME/.zfunc/_kubectl
+helm completion zsh >$HOME/.zfunc/_helm
