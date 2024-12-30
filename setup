@@ -1,2 +1,18 @@
 #!/bin/bash
-ansible-playbook playbook.yaml
+
+export XDG_CONFIG_HOME="$HOME"/.config
+
+# Download .zshrc from main dotfiles repo
+curl -o "$HOME/.zshrc" https://raw.githubusercontent.com/Lucioschenkel/dotfiles/main/.zshrc
+
+# Install brew packages
+/home/linuxbrew/.linuxbrew/bin/brew bundle install --file Brewfile
+
+# Symlink dotfiles
+stow .
+
+# Setup shell completion
+midir -p "$HOME/.zfunc
+flux completion zsh > $HOME/.zfunc/_flux
+kubectl completion zsh > $HOME/.zfunc/_kubectl
+helm completion zsh > $HOME/.zfunc/_helm
