@@ -5,6 +5,11 @@ export XDG_CONFIG_HOME="$HOME"/.config
 # Download .zshrc from main dotfiles repo
 curl -o "$HOME/.zshrc" https://raw.githubusercontent.com/Lucioschenkel/dotfiles/main/.zshrc
 
+# Setup homebrew
+test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >> ~/.bashrc
+
 # Install brew packages
 /home/linuxbrew/.linuxbrew/bin/brew bundle install --file Brewfile
 
