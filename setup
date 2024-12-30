@@ -8,8 +8,8 @@ curl -o "$HOME/.zshrc" https://raw.githubusercontent.com/Lucioschenkel/dotfiles/
 # Setup homebrew
 test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-echo "eval \"\$($(brew --prefix)/bin/brew shellenv)\"" >>~/.zshrc
-echo 'export PATH=$PATH:/home/linuxbrew/.linuxbrew/opt' >>~/.zshrc
+
+source ~/.zshrc
 
 # Install brew packages
 /home/linuxbrew/.linuxbrew/bin/brew bundle install --file Brewfile
