@@ -1,6 +1,8 @@
 #!/bin/bash
 
 export XDG_CONFIG_HOME="$HOME"/.config
+mkdir -p "$XDG_CONFIG_HOME"
+ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME/nvim"
 
 # Download .zshrc from main dotfiles repo
 curl -o "$HOME/.zshrc" https://raw.githubusercontent.com/Lucioschenkel/dotfiles/main/.zshrc
@@ -10,16 +12,23 @@ test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # Install brew packages
-/home/linuxbrew/.linuxbrew/bin/brew bundle install --file Brewfile
+packages=(
+  fd
+  k9s
+  lazygit
+  npm
+  ripgrep
+  fluxcd/tap/flux
+)
+for package in "${packages[@]}"; do
+  /home/linuxbrew/.linuxbrew/bin/brew install "$package"
+done
 
 # Install pure prompt
 mkdir -p "$HOME/.zsh"
 git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 
-source ~/.zshrc
-
 # Symlink dotfiles
-stow .
 
 # Setup shell completion
 mkdir -p "$HOME/.zfunc"
