@@ -9,10 +9,14 @@ curl -o "$HOME/.zshrc" https://raw.githubusercontent.com/Lucioschenkel/dotfiles/
 test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-source ~/.zshrc
-
 # Install brew packages
 /home/linuxbrew/.linuxbrew/bin/brew bundle install --file Brewfile
+
+# Install pure prompt
+mkdir -p "$HOME/.zsh"
+git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
+
+source ~/.zshrc
 
 # Symlink dotfiles
 stow .
