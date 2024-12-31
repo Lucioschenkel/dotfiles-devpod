@@ -13,12 +13,16 @@ test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/bre
 
 # Install brew packages
 packages=(
+  direnv
   fd
+  fluxcd/tap/flux
+  fzf
+  kubectl
+  kubectx
   k9s
   lazygit
   npm
   ripgrep
-  fluxcd/tap/flux
 )
 for package in "${packages[@]}"; do
   /home/linuxbrew/.linuxbrew/bin/brew install "$package"
