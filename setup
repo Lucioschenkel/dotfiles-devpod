@@ -18,4 +18,14 @@ nix-env -iA nixpkgs.myPackages
 mkdir -p "$HOME/.zsh"
 git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 
+# Install pnpm
+curl -fsSL https://get.pnpm.io/install.sh | sh -
+
+# Install nodejs
+pnpm env use --global lts
+
+# Install corepack globally
+pnpm add -g corepack
+
+# Setup kubectl completions
 echo 'source <(kubectl completion zsh)' >>"$HOME"/.zshrc

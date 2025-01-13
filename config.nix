@@ -7,7 +7,6 @@
               direnv
               neovim
               go
-              nodejs_22
               pure-prompt
               fd
               ripgrep
