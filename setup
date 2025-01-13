@@ -18,4 +18,4 @@ nix-env -iA nixpkgs.myPackages
 mkdir -p "$HOME/.zsh"
 git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 
-echo 'source <(kubectl completion bash)' >>"$HOME"/.zshrc
+echo 'source <(kubectl completion zsh)' >>"$HOME"/.zshrc
