@@ -4,6 +4,7 @@
             name = "dev-tools";
             paths = [
               zsh-completions
+              direnv
               neovim
               go
               nodejs_22
