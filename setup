@@ -6,27 +6,35 @@ mkdir -p "$XDG_CONFIG_HOME"
 # Download .zshrc from main dotfiles repo
 curl -o "$HOME/.zshrc" https://raw.githubusercontent.com/Lucioschenkel/dotfiles/main/.zshrc
 
-# Setup homebrew
-test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
-test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+arch=$(file -Lb /usr/bin/ld | cut -d, -f2)
 
-# Install brew packages
-packages=(
-  direnv
-  fd
-  fluxcd/tap/flux
-  fzf
-  kubectl
-  kubectx
-  k9s
-  lazygit
-  npm
-  ripgrep
-  stow
-)
-for package in "${packages[@]}"; do
-  /home/linuxbrew/.linuxbrew/bin/brew install "$package"
-done
+# Use nix for arm64, linuxbrew on amd64
+if [[ "$arch" == "x86-64" ]]; then
+  # Setup homebrew
+  test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+  test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+  # Install brew packages
+  packages=(
+    direnv
+    fd
+    fluxcd/tap/flux
+    fzf
+    kubectl
+    kubectx
+    k9s
+    lazygit
+    npm
+    ripgrep
+    stow
+  )
+  for package in "${packages[@]}"; do
+    /home/linuxbrew/.linuxbrew/bin/brew install "$package"
+  done
+else
+  # Install packages from config.nix
+  nix-env -iA nixpkgs.myPackages
+fi
 
 # Install pure prompt
 mkdir -p "$HOME/.zsh"
