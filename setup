@@ -21,6 +21,9 @@ git clone https://github.com/sindresorhus/pure.git "$HOME/.zsh/pure"
 # Install pnpm
 curl -fsSL https://get.pnpm.io/install.sh | sh -
 
+# Source .zshrc to use pnpm
+source /home/vscode/.zshrc
+
 # Install nodejs
 pnpm env use --global lts
 
