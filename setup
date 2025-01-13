@@ -8,6 +8,8 @@ curl -o "$HOME/.zshrc" https://raw.githubusercontent.com/Lucioschenkel/dotfiles/
 
 arch=$(file -Lb /usr/bin/ld | cut -d, -f2)
 
+echo "Arch: $arch"
+
 # Use nix for arm64, linuxbrew on amd64
 if [[ "$arch" == "x86-64" ]]; then
   # Setup homebrew
