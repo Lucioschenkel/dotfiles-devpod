@@ -11,7 +11,7 @@ arch=$(file -Lb /usr/bin/ld | cut -d, -f2)
 echo "Arch: $arch"
 
 # Use nix for arm64, linuxbrew on amd64
-if [[ "$arch" == "x86-64" ]]; then
+if [[ "$arch" == x86* ]]; then
   # Setup homebrew
   test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
   test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
@@ -33,6 +33,7 @@ if [[ "$arch" == "x86-64" ]]; then
   for package in "${packages[@]}"; do
     /home/linuxbrew/.linuxbrew/bin/brew install "$package"
   done
+
 else
   # Install packages from config.nix
   nix-env -iA nixpkgs.myPackages
