@@ -7,7 +7,7 @@ mkdir -p "$XDG_CONFIG_HOME/nixpkgs"
 mkdir -p "$XDG_CONFIG_HOME/nvim"
 
 ln -sf "$PWD/config.nix" "$XDG_CONFIG_HOME/nixpkgs/config.nix"
-ln -sf "$PWD/.config/nvim" "$XDG_CONFIG_HOME/nvim"
+ln -sf "$PWD/nvim" "$XDG_CONFIG_HOME/nvim"
 
 # Download .zshrc from main dotfiles repo
 curl -o "$HOME/.zshrc" https://raw.githubusercontent.com/Lucioschenkel/dotfiles/main/.zshrc
